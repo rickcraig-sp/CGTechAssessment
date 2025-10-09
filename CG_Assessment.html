@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capital Group Tech Assessment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .diagram-box {
+            border: 2px solid;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .arrow {
+            position: absolute;
+            background-color: #4a5568;
+            height: 2px;
+            width: 100%;
+        }
+        .arrow::after {
+            content: '';
+            position: absolute;
+            right: -1px;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 10px solid #4a5568;
+        }
+        .arrow-label {
+            position: absolute;
+            background-color: #f8f9fa;
+            padding: 0 0.5rem;
+            color: #4a5568;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-6xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold leading-tight text-gray-900">Capital Group Tech Assessment</h1>
+                    <p class="mt-1 text-sm text-gray-600">Current State and Recommended Tech Roadmap</p>
+                </div>
+                <div class="bg-red-100 text-red-800 text-xs font-semibold px-3 py-1 rounded-full">
+                    COMPANY RESTRICTED
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+
+        <!-- Key Insights Section -->
+        <section id="insights">
+            <h2 class="text-2xl font-bold text-gray-900 border-b pb-2 mb-6">Key Insights from Discovery</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card: Integrated Customer View -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8 text-blue-500 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                        <h3 class="text-lg font-semibold text-gray-900">Integrated Customer View</h3>
+                    </div>
+                    <p class="text-gray-600">A unified 360-degree customer profile is critically needed. Data is currently siloed across Adobe Analytics and Salesforce, forcing analysts to consult multiple sources. The primary request is for clean, consolidated data for easier audience segmentation.</p>
+                </div>
+
+                <!-- Card: Data Cleanliness -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8 text-green-500 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2zM3 16a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z" /></svg>
+                        <h3 class="text-lg font-semibold text-gray-900">Data Cleanliness & Consistency</h3>
+                    </div>
+                    <p class="text-gray-600">Data quality is a major hurdle, requiring frequent cleaning. Manual processes and unreliable CRM updates challenge personalization efforts. A universal Party ID is being implemented to address this.</p>
+                </div>
+
+                <!-- Card: CDP Complexity -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8 text-purple-500 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+                        <h3 class="text-lg font-semibold text-gray-900">CDP Complexity & Rigidity</h3>
+                    </div>
+                    <p class="text-gray-600">The current CDP (ActionIQ) is being replaced. It struggles with complex institutional data and rigid table relationships, making advanced segmentation difficult and requiring heavy IT involvement for changes.</p>
+                </div>
+                
+                <!-- Card: Adobe Analytics Underutilization -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8 text-yellow-500 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                        <h3 class="text-lg font-semibold text-gray-900">Adobe Analytics Underutilization</h3>
+                    </div>
+                    <p class="text-gray-600">The platform is underused due to a lack of dedicated resources. Reporting is cumbersome, data export is challenging, and it fails to capture the full user journey beyond the page level, limiting its strategic value.</p>
+                </div>
+
+                <!-- Card: Audience Journey Gap -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8 text-indigo-500 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                        <h3 class="text-lg font-semibold text-gray-900">Audience Journey Gap</h3>
+                    </div>
+                    <p class="text-gray-600">A critical gap exists in connecting web engagement to automated email journeys since Adobe Audience Manager was degraded. The transition to AEP is estimated to take 18-24 months, leaving a functional void.</p>
+                </div>
+                
+                <!-- Card: Technical Debt in AEM -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8 text-pink-500 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                        <h3 class="text-lg font-semibold text-gray-900">Technical Debt in AEM</h3>
+                    </div>
+                    <p class="text-gray-600">Significant technical debt is accumulating in AEM from pages using old templates. To use new features, pages must be manually rebuilt, requiring a major effort to modernize the web property.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Architecture Section -->
+        <section id="current-architecture" class="mt-16">
+            <h2 class="text-2xl font-bold text-gray-900 border-b pb-2 mb-8">Current Architecture</h2>
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <div class="w-full h-[500px] relative flex items-center justify-center">
+                    <!-- Caspian -->
+                    <div class="diagram-box border-green-500 bg-green-50 absolute" style="top: 20px; left: 20px;">Caspian<br>(Data Layer)</div>
+                    
+                    <!-- AEM -->
+                    <div class="diagram-box border-red-500 bg-red-50 absolute" style="top: 20px; left: 50%; transform: translateX(-50%);">AEM<br>(Web)</div>
+                    
+                    <!-- Adobe Analytics -->
+                    <div class="diagram-box border-red-500 bg-red-50 absolute" style="top: 20px; right: 20px;">Adobe Analytics</div>
+
+                    <!-- Informatica -->
+                    <div class="diagram-box border-gray-400 bg-gray-50 absolute" style="top: 150px; left: 20px; transform: rotate(45deg);">Informatica</div>
+
+                    <!-- ActionIQ -->
+                    <div class="diagram-box border-blue-800 bg-blue-100 absolute" style="top: 210px; left: 50%; transform: translateX(-50%); width: 150px;">ActionIQ</div>
+
+                    <!-- Adobe Target -->
+                    <div class="diagram-box border-red-500 bg-red-50 absolute" style="top: 210px; right: 20px;">Adobe Target</div>
+                    
+                    <!-- Manual Uploads -->
+                     <div class="diagram-box border-gray-400 bg-gray-50 absolute" style="bottom: 110px; left: 50%; transform: translateX(-120%) rotate(45deg);">Manual<br>Uploads</div>
+
+                    <!-- SFMC -->
+                    <div class="diagram-box border-blue-500 bg-blue-50 absolute" style="bottom: 20px; left: 50%; transform: translateX(-120%);">SFMC</div>
+                    
+                    <!-- SFDC -->
+                    <div class="diagram-box border-blue-500 bg-blue-50 absolute" style="bottom: 20px; right: 50%; transform: translateX(120%);">SFDC</div>
+
+                    <!-- Arrows -->
+                    <div class="absolute w-px bg-gray-400" style="left: 120px; top: 110px; height: 50px;"></div>
+                    <div class="absolute h-px bg-gray-400" style="left: 120px; top: 160px; width: 100px; transform: rotate(45deg); transform-origin: left top;"></div>
+                    <div class="absolute h-px bg-gray-400" style="top: 70px; left: calc(50% + 75px); width: calc(50% - 250px);"><div class="arrow-label" style="left: 50%; transform: translateX(-50%) translateY(-110%);">Web Analytics Feed</div></div>
+                    <div class="absolute w-px bg-gray-400" style="top: 110px; left: 50%; height: 100px;"><div class="arrow-label" style="top: 50%; transform: translateX(10%) translateY(-50%);">Personalization<br>A/B Testing</div></div>
+                    <div class="absolute h-px bg-gray-400" style="top: 250px; left: calc(50% + 75px); width: calc(50% - 250px);"><div class="arrow-label" style="left: 50%; transform: translateX(-50%) translateY(-110%);">Segmented Audiences</div></div>
+                    <div class="absolute h-px bg-gray-400" style="left: calc(50% - 150px - 100px); top: 250px; width: 100px;"> <div class="arrow-label" style="left: 50%; transform: translateX(-50%) translateY(-110%);"></div></div>
+                    <div class="absolute w-px bg-gray-400" style="left: 50%; top: 300px; height: 75px;"><div class="arrow-label" style="top: 50%; transform: translateX(10%) translateY(-50%);">Audience Data</div></div>
+                    <div class="absolute h-px bg-gray-400" style="left: calc(50% - 125px); top: 445px; width: 150px;"><div class="arrow-label" style="left: 50%; transform: translateX(-50%) translateY(-110%);">Leads/Contacts</div></div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Future State Recommendations -->
+        <section id="future-state" class="mt-16">
+            <h2 class="text-2xl font-bold text-gray-900 border-b pb-2 mb-8">Future State Recommendations</h2>
+            
+            <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
+                <h3 class="text-xl font-semibold mb-4 text-center">Future State Architecture</h3>
+                <div class="w-full h-[500px] relative flex items-center justify-center">
+                    <!-- Caspian -->
+                    <div class="diagram-box border-green-500 bg-green-50 absolute" style="top: 20px; left: 20px;">Caspian<br>(Data Layer)</div>
+                    
+                    <!-- Adobe Analytics -->
+                    <div class="diagram-box border-red-500 bg-red-50 absolute" style="top: 20px; left: 50%; transform: translateX(-50%);">Adobe Analytics</div>
+                    
+                    <!-- AEM -->
+                    <div class="diagram-box border-red-500 bg-red-50 absolute" style="top: 20px; right: 20px;">AEM<br>(Web)</div>
+
+                    <!-- Informatica -->
+                    <div class="diagram-box border-gray-400 bg-gray-50 absolute" style="top: 150px; left: 20px; transform: rotate(45deg);">Informatica</div>
+                    
+                    <!-- Salesforce Data Cloud -->
+                    <div class="diagram-box border-blue-800 bg-blue-100 absolute" style="top: 200px; left: 50%; transform: translateX(-50%); width: 150px; height: 100px;">Salesforce<br>Data Cloud</div>
+
+                    <!-- Informatica/SFTP -->
+                     <div class="diagram-box border-gray-400 bg-gray-50 absolute" style="top: 210px; right: 20px; transform: rotate(45deg);">Informatica<br>or SFTP</div>
+
+                    <!-- SFDC -->
+                    <div class="diagram-box border-blue-500 bg-blue-50 absolute" style="bottom: 20px; left: 20px;">SFDC</div>
+                    
+                    <!-- SFMC -->
+                    <div class="diagram-box border-blue-500 bg-blue-50 absolute" style="bottom: 20px; left: 50%; transform: translateX(20%);">SFMC</div>
+                    
+                    <!-- Adobe Target -->
+                    <div class="diagram-box border-red-500 bg-red-50 absolute" style="bottom: 20px; right: 20px;">Adobe Target</div>
+
+                    <!-- Arrows -->
+                    <div class="absolute w-px bg-gray-400" style="left: 120px; top: 110px; height: 50px;"></div>
+                    <div class="absolute h-px bg-gray-400" style="left: 120px; top: 160px; width: 100px; transform: rotate(45deg); transform-origin: left top;"></div>
+                    <div class="absolute h-px bg-gray-400" style="top: 70px; left: calc(50% + 75px); width: calc(50% - 250px);"><div class="arrow-label" style="left: 50%; transform: translateX(-50%) translateY(-110%);">Web Analytics Feed</div></div>
+                    <div class="absolute w-px bg-gray-400" style="top: 110px; left: 50%; height: 90px;"><div class="arrow-label" style="top: 50%; transform: translateX(10%) translateY(-50%);">Web<br>Engagement<br>Data</div></div>
+                    <div class="absolute w-px bg-gray-400" style="top: 290px; right: 120px; height: 100px;"><div class="arrow-label" style="top: 50%; transform: translateX(-110%) translateY(-50%);">Personalization<br>A/B Testing</div></div>
+                    <div class="absolute h-px bg-gray-400" style="right: calc(50% + 10px); top: 250px; width: 100px;"><div class="arrow-label" style="left: 50%; transform: translateX(-50%) translateY(-110%);">Segmented Audiences</div></div>
+                    <div class="absolute h-px bg-gray-400" style="top: 350px; left: calc(50%); width: 100px;"><div class="arrow-label" style="left: 50%; transform: translateX(-50%) translateY(-110%);">Segmented Audiences</div></div>
+                    <div class="absolute h-px bg-gray-400" style="left: 120px; top: 350px; width: calc(50% - 200px);"><div class="arrow-label" style="left: 50%; transform: translateX(-50%) translateY(-110%);">Unified Profile (360) Data</div></div>
+                    <div class="absolute h-px bg-gray-400" style="left: 120px; bottom: 70px; width: calc(50% - 100px);"><div class="arrow-label" style="left: 50%; transform: translateX(-50%) translateY(-110%);">Leads/Contacts/Accts</div></div>
+                    <div class="absolute h-px bg-gray-400" style="left: calc(50% + 120px - 150px); bottom: 70px; width: 150px;"><div class="arrow-label" style="left: 50%; transform: translateX(-50%) translateY(-110%);">Leads & Contacts</div></div>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Fully Integrated CDP</h3>
+                    <p class="text-gray-600 leading-relaxed">With Salesforce Data Cloud replacing ActionIQ, data from Caspian (via Informatica) and Adobe Analytics can be piped directly into the CDP. Data Cloud's native connection to SFMC simplifies ingesting engagement data and pushing segmented audiences, which can automatically trigger journeys. This reduces manual effort. The integration with Adobe Target may require some custom work using Informatica or an SFTP target.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Profile Unification</h3>
+                    <p class="text-gray-600 leading-relaxed">Data Cloud’s identity resolution can stitch data from Adobe Analytics, SFMC, Caspian, and Salesforce CRM to create unified customer profiles. Matching rules can prevent unclean data from impacting campaigns. This unified view allows for behavior-triggered sends and can bridge the gap left by Audience Manager. Inside Salesforce CRM, unified profiles can be viewed directly from contact/lead records, providing a full 360-degree activity history without needing to check multiple systems.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Robust Analytics</h3>
+                    <p class="text-gray-600 leading-relaxed">Reporting pain can be eased by using Data Cloud to perform data transformations during ingestion. For advanced business intelligence, it may still be beneficial to push this formatted analytics data back into Caspian for use with a dedicated BI tool. Exporting and manipulating data for specific reporting needs may still require dedicated resources.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Asset Migration</h3>
+                    <p class="text-gray-600 leading-relaxed">It is strongly recommended that the team migrates all pages using old AEM templates and components to the new standards. Maintaining disparate assets decreases technical stability over time. Pages should be prioritized for rebuilding based on their importance for supporting new, valuable features, such as the CEO search functionality.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white mt-16">
+        <div class="max-w-6xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; 2025 Capital Group. All rights reserved. Confidential and Proprietary.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
