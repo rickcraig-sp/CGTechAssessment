@@ -9,9 +9,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --brand-blue: #1CADFF;
+            --brand-green: #00C93C;
+            --brand-background: #F5F3E9;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
+            background-color: var(--brand-background);
+        }
+        .tab-button.active {
+            border-bottom-color: var(--brand-blue);
+            color: var(--brand-blue);
         }
     </style>
 </head>
@@ -32,106 +41,108 @@
 
     <main class="max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
 
-        <div id="accordion-container" class="space-y-4">
+        <!-- Tab Navigation -->
+        <div class="mb-4 border-b border-gray-200">
+            <ul class="flex flex-wrap -mb-px text-lg font-medium text-center" id="myTab" role="tablist">
+                <li class="mr-2" role="presentation">
+                    <button class="tab-button inline-block p-4 border-b-2 rounded-t-lg transition-colors duration-300" id="insights-tab" type="button" role="tab" aria-controls="insights" aria-selected="true">Key Insights</button>
+                </li>
+                <li class="mr-2" role="presentation">
+                    <button class="tab-button inline-block p-4 border-b-2 rounded-t-lg transition-colors duration-300" id="current-arch-tab" type="button" role="tab" aria-controls="current-arch" aria-selected="false">Current Architecture</button>
+                </li>
+                <li class="mr-2" role="presentation">
+                    <button class="tab-button inline-block p-4 border-b-2 rounded-t-lg transition-colors duration-300" id="future-state-tab" type="button" role="tab" aria-controls="future-state" aria-selected="false">Future State</button>
+                </li>
+            </ul>
+        </div>
 
-            <!-- Accordion Item 1: Key Insights -->
-            <div>
-                <h2 id="accordion-heading-1">
-                    <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 transition-all duration-300" data-accordion-target="#accordion-body-1" aria-expanded="true" aria-controls="accordion-body-1">
-                        <span class="text-xl">Key Insights from Discovery</span>
-                        <svg data-accordion-icon class="w-6 h-6 rotate-180 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                    </button>
-                </h2>
-                <div id="accordion-body-1" class="" aria-labelledby="accordion-heading-1">
-                    <div class="p-5 border border-t-0 border-gray-200 rounded-b-lg bg-white">
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <!-- Card: Integrated Customer View -->
-                            <div class="bg-gray-50 p-6 rounded-lg border">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-3">Integrated Customer View</h3>
-                                <p class="text-gray-600">"Lack of a unified customer 360-degree profile across channels is a major pain point. Currently, web engagement data captured by Adobe Analytics/Target is siloed from email engagement data stored in Salesforce Marketing Cloud (SFMC). Behavioral data is sent to Action IQ, but analysts often have to consult multiple sources to get a full picture. The primary ""magic wand"" request is to have good, clean data consolidated in one place to easily segment and target audiences"</p>
-                            </div>
-                            <!-- Card: Data Cleanliness -->
-                            <div class="bg-gray-50 p-6 rounded-lg border">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-3">Data Cleanliness & Consistency</h3>
-                                <p class="text-gray-600">"Data quality and consistency present a major organizational hurdle. Data discrepancies are common, and the team frequently has to clean data every time it is used. For example, the institutional lead vetting process is partly manual, and the sales operations team, which is responsible for updating CRM data, is not always reliable, which challenges personalization efforts. The organization is attempting to address this through the implementation of a universal Party ID as a unique identifier across all known audiences"</p>
-                            </div>
-                            <!-- Card: CDP Complexity -->
-                            <div class="bg-gray-50 p-6 rounded-lg border">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-3">CDP Complexity & Rigidity</h3>
-                                <p class="text-gray-600">"Action IQ (AIQ), the current Customer Data Platform, is being replaced due to complexity handling. It particularly struggles with the complexity of institutional data (B2B side) due to rigid data table relationships and constraints. Advanced segmentation use cases are difficult to build, and changes to the data model require a significant amount of IT involvement, creating a bottleneck for the business."</p>
-                            </div>
-                            <!-- Card: Adobe Analytics Underutilization -->
-                            <div class="bg-gray-50 p-6 rounded-lg border">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-3">Adobe Analytics Underutilization</h3>
-                                <p class="text-gray-600">"The organization is not getting the full value out of Adobe Analytics due to a lack of dedicated resources. Reporting is described as cumbersome, and exporting data is challenging. A key limitation is the inability to capture the full user journey at the person level rather than the page level, which prevents the business from understanding engagement patterns and optimizing the customer experience."</p>
-                            </div>
-                            <!-- Card: Audience Journey Gap -->
-                            <div class="bg-gray-50 p-6 rounded-lg border">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-3">Audience Journey Gap</h3>
-                                <p class="text-gray-600">"A critical functionality gap exists in connecting web engagement data to automated email journeys. This was previously handled by Adobe Audience Manager, but that tool was degraded when the website was re-platformed. The long-term plan is to use Adobe Experience Platform (AEP) to bridge this gap, but the implementation is estimated to take 18-24 months, leaving a functional void in the interim."</p>
-                            </div>
-                            <!-- Card: Technical Debt in AEM -->
-                            <div class="bg-gray-50 p-6 rounded-lg border">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-3">Technical Debt in AEM</h3>
-                                <p class="text-gray-600">"Significant technical debt is accumulating in Adobe Experience Manager (AEM) due to a large number of pages still using old templates and components. To leverage new features and functionalities, pages must be manually rebuilt on the new templates. This requires a major effort to modernize the web property and presents a barrier to innovation."</p>
-                            </div>
+        <!-- Tab Content -->
+        <div id="tabContent">
+            <!-- Key Insights Tab Panel -->
+            <div class="tab-panel p-4 bg-white rounded-lg border shadow-sm" id="insights" role="tabpanel" aria-labelledby="insights-tab">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                     <!-- Card: Integrated Customer View -->
+                    <div class="bg-gray-50 p-6 rounded-lg border hover:shadow-lg transition-shadow">
+                        <div class="flex items-center mb-4">
+                           <svg class="h-8 w-8 text-[color:var(--brand-blue)] mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                            <h3 class="text-lg font-semibold text-gray-900">Integrated Customer View</h3>
                         </div>
+                        <p class="text-gray-600">"Lack of a unified customer 360-degree profile across channels is a major pain point. Currently, web engagement data captured by Adobe Analytics/Target is siloed from email engagement data stored in Salesforce Marketing Cloud (SFMC). Behavioral data is sent to Action IQ, but analysts often have to consult multiple sources to get a full picture. The primary ""magic wand"" request is to have good, clean data consolidated in one place to easily segment and target audiences"</p>
+                    </div>
+                    <!-- Card: Data Cleanliness -->
+                    <div class="bg-gray-50 p-6 rounded-lg border hover:shadow-lg transition-shadow">
+                        <div class="flex items-center mb-4">
+                           <svg class="h-8 w-8 text-[color:var(--brand-green)] mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2zM3 16a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z" /></svg>
+                            <h3 class="text-lg font-semibold text-gray-900">Data Cleanliness & Consistency</h3>
+                        </div>
+                        <p class="text-gray-600">"Data quality and consistency present a major organizational hurdle. Data discrepancies are common, and the team frequently has to clean data every time it is used. For example, the institutional lead vetting process is partly manual, and the sales operations team, which is responsible for updating CRM data, is not always reliable, which challenges personalization efforts. The organization is attempting to address this through the implementation of a universal Party ID as a unique identifier across all known audiences"</p>
+                    </div>
+                    <!-- Card: CDP Complexity -->
+                    <div class="bg-gray-50 p-6 rounded-lg border hover:shadow-lg transition-shadow">
+                        <div class="flex items-center mb-4">
+                           <svg class="h-8 w-8 text-[color:var(--brand-blue)] mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+                            <h3 class="text-lg font-semibold text-gray-900">CDP Complexity & Rigidity</h3>
+                        </div>
+                        <p class="text-gray-600">"Action IQ (AIQ), the current Customer Data Platform, is being replaced due to complexity handling. It particularly struggles with the complexity of institutional data (B2B side) due to rigid data table relationships and constraints. Advanced segmentation use cases are difficult to build, and changes to the data model require a significant amount of IT involvement, creating a bottleneck for the business."</p>
+                    </div>
+                    <!-- Card: Adobe Analytics Underutilization -->
+                    <div class="bg-gray-50 p-6 rounded-lg border hover:shadow-lg transition-shadow">
+                        <div class="flex items-center mb-4">
+                           <svg class="h-8 w-8 text-[color:var(--brand-green)] mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                            <h3 class="text-lg font-semibold text-gray-900">Adobe Analytics Underutilization</h3>
+                        </div>
+                        <p class="text-gray-600">"The organization is not getting the full value out of Adobe Analytics due to a lack of dedicated resources. Reporting is described as cumbersome, and exporting data is challenging. A key limitation is the inability to capture the full user journey at the person level rather than the page level, which prevents the business from understanding engagement patterns and optimizing the customer experience."</p>
+                    </div>
+                    <!-- Card: Audience Journey Gap -->
+                    <div class="bg-gray-50 p-6 rounded-lg border hover:shadow-lg transition-shadow">
+                        <div class="flex items-center mb-4">
+                           <svg class="h-8 w-8 text-[color:var(--brand-blue)] mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                            <h3 class="text-lg font-semibold text-gray-900">Audience Journey Gap</h3>
+                        </div>
+                        <p class="text-gray-600">"A critical functionality gap exists in connecting web engagement data to automated email journeys. This was previously handled by Adobe Audience Manager, but that tool was degraded when the website was re-platformed. The long-term plan is to use Adobe Experience Platform (AEP) to bridge this gap, but the implementation is estimated to take 18-24 months, leaving a functional void in the interim."</p>
+                    </div>
+                    <!-- Card: Technical Debt in AEM -->
+                    <div class="bg-gray-50 p-6 rounded-lg border hover:shadow-lg transition-shadow">
+                        <div class="flex items-center mb-4">
+                           <svg class="h-8 w-8 text-[color:var(--brand-green)] mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                            <h3 class="text-lg font-semibold text-gray-900">Technical Debt in AEM</h3>
+                        </div>
+                        <p class="text-gray-600">"Significant technical debt is accumulating in Adobe Experience Manager (AEM) due to a large number of pages still using old templates and components. To leverage new features and functionalities, pages must be manually rebuilt on the new templates. This requires a major effort to modernize the web property and presents a barrier to innovation."</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Accordion Item 2: Current Architecture -->
-            <div>
-                <h2 id="accordion-heading-2">
-                    <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 transition-all duration-300" data-accordion-target="#accordion-body-2" aria-expanded="false" aria-controls="accordion-body-2">
-                        <span class="text-xl">Current Architecture</span>
-                        <svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                    </button>
-                </h2>
-                <div id="accordion-body-2" class="hidden" aria-labelledby="accordion-heading-2">
-                    <div class="p-5 border border-t-0 border-gray-200 rounded-b-lg bg-white">
-                        <p class="mb-4 text-gray-600">The current architecture relies on a set of integrated but often siloed systems. Data flows from a data warehouse (Informatica) and other sources into a data lake (Caspian), which then feeds the CDP (ActionIQ). The Adobe suite handles web content and analytics, while Salesforce is used for email marketing and CRM. Manual data handling is often required to bridge gaps between these systems.</p>
-                        <img src="CG-CurrentState.jpg" alt="Current Architecture Diagram" class="w-full h-auto rounded-lg shadow-md border">
-                    </div>
-                </div>
+            <!-- Current Architecture Tab Panel -->
+            <div class="tab-panel hidden p-4 bg-white rounded-lg border shadow-sm" id="current-arch" role="tabpanel" aria-labelledby="current-arch-tab">
+                <p class="mb-4 text-gray-600">The current architecture relies on a set of integrated but often siloed systems. Data flows from a data warehouse (Informatica) and other sources into a data lake (Caspian), which then feeds the CDP (ActionIQ). The Adobe suite handles web content and analytics, while Salesforce is used for email marketing and CRM. Manual data handling is often required to bridge gaps between these systems.</p>
+                <img src="CG-CurrentState.jpg" alt="Current Architecture Diagram" class="w-full h-auto rounded-lg shadow-md border">
             </div>
-
-            <!-- Accordion Item 3: Future State Recommendations -->
-            <div>
-                <h2 id="accordion-heading-3">
-                    <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 transition-all duration-300" data-accordion-target="#accordion-body-3" aria-expanded="false" aria-controls="accordion-body-3">
-                        <span class="text-xl">Future State Recommendations</span>
-                        <svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                    </button>
-                </h2>
-                <div id="accordion-body-3" class="hidden" aria-labelledby="accordion-heading-3">
-                    <div class="p-5 border border-t-0 border-gray-200 rounded-b-lg bg-white">
-                        <h3 class="text-2xl font-semibold mb-6 text-center text-gray-800">Future State Architecture</h3>
-                        <p class="mb-6 text-center max-w-3xl mx-auto text-gray-600">The recommended future state centers on replacing ActionIQ with Salesforce Data Cloud. This creates a more unified ecosystem, streamlines data flow between analytics and activation, enables robust profile unification, and provides a foundation for more sophisticated, data-driven marketing efforts.</p>
-                        <img src="CG-FutureState.jpg" alt="Future State Architecture Diagram" class="w-full h-auto rounded-lg shadow-md border mb-10">
-                        
-                        <div class="space-y-8">
-                            <div class="bg-gray-50 p-6 rounded-lg border">
-                                <h3 class="text-xl font-semibold mb-3 text-gray-900">Fully Integrated CDP</h3>
-                                <p class="text-gray-600 leading-relaxed">"With Salesforce Data Cloud now replacing ActionIQ, data from Caspian (via Informatica) and Adobe Analytics can be piped directly into the CDP. Data Cloud’s native connection to SFMC simplifies ingesting engagement data and pushing segmented audiences, which can automatically trigger journeys, reducing manual list pull efforts. The integration with Adobe Target may require some custom work using Informatica or an SFTP target."</p>
-                            </div>
-                            <div class="bg-gray-50 p-6 rounded-lg border">
-                                <h3 class="text-xl font-semibold mb-3 text-gray-900">Profile Unification</h3>
-                                <p class="text-gray-600 leading-relaxed">"Having identity resolution set up in Data Cloud can also help with giving teams full 360 views of a customer history with Capital Group. From within Salesforce CRM, unified profiles can be linked and viewed from contact and lead records automatically, so users can see profile data from all systems (behavioral and profile) that have been ingested into Data Cloud. At least on the Salesforce side, this should prevent the need to go into multiple systems to get a full activity history for an individual."</p>
-                            </div>
-                            <div class="bg-gray-50 p-6 rounded-lg border">
-                                <h3 class="text-xl font-semibold mb-3 text-gray-900">Robust Analytics</h3>
-                                <p class="text-gray-600 leading-relaxed">"Some of the reporting pain can potentially be eased by creating formatting data transformations inside Data Cloud as data is being ingested. However, it might still be beneficial to have this analytics data pushed back into Caspian after Data Cloud formats it, so that reporting can be done through a BI tool. Pulling analytics may still require the resources to export and manipulate data for specific reporting needs."</p>
-                            </div>
-                            <div class="bg-gray-50 p-6 rounded-lg border">
-                                <h3 class="text-xl font-semibold mb-3 text-gray-900">Asset Migration</h3>
-                                <p class="text-gray-600 leading-relaxed">"It’s recommended the team go through an exercise of migrating all pages still on old templates or using old components, over to the new templates. Maintaining disparate components and templates over time will decrease technical stability. Prioritize rebuilding pages necessary to support new, valuable features. For example, if the CEO search functionality is a high-priority feature, any page or section that needs to leverage this search must be rebuilt on the new templates first."</p>
-                            </div>
-                        </div>
+            <!-- Future State Tab Panel -->
+            <div class="tab-panel hidden p-4 bg-white rounded-lg border shadow-sm" id="future-state" role="tabpanel" aria-labelledby="future-state-tab">
+                <h3 class="text-2xl font-semibold mb-6 text-center text-gray-800">Future State Architecture</h3>
+                <p class="mb-6 text-center max-w-3xl mx-auto text-gray-600">The recommended future state centers on replacing ActionIQ with Salesforce Data Cloud. This creates a more unified ecosystem, streamlines data flow between analytics and activation, enables robust profile unification, and provides a foundation for more sophisticated, data-driven marketing efforts.</p>
+                <img src="CG-FutureState.jpg" alt="Future State Architecture Diagram" class="w-full h-auto rounded-lg shadow-md border mb-10">
+                
+                <div class="space-y-8">
+                    <div class="bg-gray-50 p-6 rounded-lg border">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Fully Integrated CDP</h3>
+                        <p class="text-gray-600 leading-relaxed">"With Salesforce Data Cloud now replacing ActionIQ, data from Caspian (via Informatica) and Adobe Analytics can be piped directly into the CDP. Data Cloud’s native connection to SFMC simplifies ingesting engagement data and pushing segmented audiences, which can automatically trigger journeys, reducing manual list pull efforts. The integration with Adobe Target may require some custom work using Informatica or an SFTP target."</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg border">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Profile Unification</h3>
+                        <p class="text-gray-600 leading-relaxed">"Having identity resolution set up in Data Cloud can also help with giving teams full 360 views of a customer history with Capital Group. From within Salesforce CRM, unified profiles can be linked and viewed from contact and lead records automatically, so users can see profile data from all systems (behavioral and profile) that have been ingested into Data Cloud. At least on the Salesforce side, this should prevent the need to go into multiple systems to get a full activity history for an individual."</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg border">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Robust Analytics</h3>
+                        <p class="text-gray-600 leading-relaxed">"Some of the reporting pain can potentially be eased by creating formatting data transformations inside Data Cloud as data is being ingested. However, it might still be beneficial to have this analytics data pushed back into Caspian after Data Cloud formats it, so that reporting can be done through a BI tool. Pulling analytics may still require the resources to export and manipulate data for specific reporting needs."</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg border">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Asset Migration</h3>
+                        <p class="text-gray-600 leading-relaxed">"It’s recommended the team go through an exercise of migrating all pages still on old templates or using old components, over to the new templates. Maintaining disparate components and templates over time will decrease technical stability. Prioritize rebuilding pages necessary to support new, valuable features. For example, if the CEO search functionality is a high-priority feature, any page or section that needs to leverage this search must be rebuilt on the new templates first."</p>
                     </div>
                 </div>
             </div>
         </div>
+
     </main>
 
     <footer class="bg-white mt-16">
@@ -141,28 +152,38 @@
     </footer>
 
     <script>
-        document.querySelectorAll('[data-accordion-target]').forEach(button => {
-            const targetId = button.getAttribute('data-accordion-target');
-            const targetPanel = document.querySelector(targetId);
-            const icon = button.querySelector('[data-accordion-icon]');
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabPanels = document.querySelectorAll('.tab-panel');
 
-            // Set initial state based on aria-expanded
-            if (button.getAttribute('aria-expanded') === 'true') {
-                targetPanel.classList.remove('hidden');
-                icon.classList.add('rotate-180');
-            } else {
-                targetPanel.classList.add('hidden');
-                icon.classList.remove('rotate-180');
-            }
+        function showTab(tabId) {
+            tabPanels.forEach(panel => {
+                if (panel.id === tabId) {
+                    panel.classList.remove('hidden');
+                } else {
+                    panel.classList.add('hidden');
+                }
+            });
 
+            tabButtons.forEach(button => {
+                if (button.getAttribute('aria-controls') === tabId) {
+                    button.classList.add('active');
+                    button.setAttribute('aria-selected', 'true');
+                } else {
+                    button.classList.remove('active');
+                    button.setAttribute('aria-selected', 'false');
+                }
+            });
+        }
+
+        tabButtons.forEach(button => {
             button.addEventListener('click', () => {
-                const isExpanded = button.getAttribute('aria-expanded') === 'true';
-                
-                button.setAttribute('aria-expanded', !isExpanded);
-                targetPanel.classList.toggle('hidden');
-                icon.classList.toggle('rotate-180');
+                const targetTabId = button.getAttribute('aria-controls');
+                showTab(targetTabId);
             });
         });
+
+        // Show the first tab by default
+        showTab('insights');
     </script>
 
 </body>
